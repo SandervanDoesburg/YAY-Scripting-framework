@@ -135,11 +135,16 @@ class YS_Router Extends YS_Core
 		// check SEO
 		if($this->config->script->force_seo === true && $controller == $this->config->script->default_controller && $_GET['a'] == $controller && empty($_GET['b'])){
 		
-			// check postdata
-			if($_SERVER['REQUEST_METHOD'] != "POST"){
+			// check b
+			if($_GET['b'] != 'index'){
 		
-				// redirect
-				$this->helpers->http->redirect('/', 301);
+				// check postdata
+				if($_SERVER['REQUEST_METHOD'] != "POST"){
+			
+					// redirect
+					$this->helpers->http->redirect('/', 301);
+					
+				}
 				
 			}
 		
